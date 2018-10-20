@@ -3,7 +3,7 @@ module.exports = class List {
         this.name = name
         this.items = []
     }
-    add(mainList) {
+    addToMainList(mainList) {
         mainList.lists.push(this)
     }
     report() {
