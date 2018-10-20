@@ -1,0 +1,11 @@
+module.exports = class MainList {
+    constructor() {
+        this.lists = []
+    }
+    add(mainlist) {
+        mainList.lists.push(this)
+    }
+    report() {
+        console.log(this.name, this.mainLists)
+    }
+  }
