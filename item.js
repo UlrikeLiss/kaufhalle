@@ -3,7 +3,7 @@ module.exports = class Item{
         this.name = name
         this.count = count
     }
-    add(list) {
+    addToList(list) {
         list.items.push(this)
     }
   }
