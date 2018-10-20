@@ -1,1 +1,25 @@
+const List = require('./list')
+const Item = require('./item')
+const MainList = require('./mainlist')
+const Database = require('./database')
 
+  const milk = new Item ('Milk', 2)
+  const butter = new Item ('Butter', 1)
+  const food = new List("Food")
+  const ikea = new List("Ikea")
+  const table = new Item('Table',1)
+  const mainList = new MainList()
+
+  milk.add(food)
+  butter.add(food)
+  table.add(ikea)
+  food.report()
+  ikea.report()
+
+  console.log(milk, butter, table)
+  console.log(food,ikea)
+  console.log(mainList)
+
+  Database.save(food)
+  const loadedFile = Database.load()
+  console.log(loadedFile.items)
