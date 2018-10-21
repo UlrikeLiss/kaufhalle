@@ -4,6 +4,6 @@ module.exports = class MainList {
         this.lists = []
     }
     report() {
-        console.log(this.name,this.lists)
+        console.log(this.name, this.lists, this.lists.length)
     }
   }
