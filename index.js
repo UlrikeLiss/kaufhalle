@@ -21,7 +21,7 @@ const Database = require('./database')
 
   console.log(milk, butter, table)
   console.log(food,ikea)
-  console.log(UliThomas)
+  UliThomas.report()
 
   Database.save(UliThomas)
   const loadedFile = Database.load()
