@@ -3,9 +3,10 @@ module.exports = class List {
         this.name = name
         this.items = []
     }
-    addToMainList(mainList) {
-        mainList.lists.push(this)
-    }
+    addItem(item) {
+        this.items.push(item);
+        }
+        
     report() {
         console.log(this.name, this.items)
     }
