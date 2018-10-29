@@ -13,8 +13,8 @@ module.exports = class MainList {
     }
     static create({ name, lists, items }) {
         const mainList = new MainList(name)
-        mainList.lists = lists.map(MainList.create)
-        list.items = items.map(List.create)
+        mainList.lists = lists.map(List.create)
+        list.items = items.map(Item.create)
         return mainList
     }
   }
