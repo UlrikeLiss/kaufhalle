@@ -17,12 +17,24 @@ const Database = require('./database')
   ikea.report()
   UliThomas.addList(ikea)
   UliThomas.addList(food)
-  UliThomas.report()
 
-  console.log(milk, butter, table)
-  console.log(food,ikea)
-  UliThomas.report()
+// Save to DB
 
-  Database.save(UliThomas)
-  const loadedFile = Database.load()
-  console.log(loadedFile.items)
+  async function saveFile() {
+    const items = [milk,butter,table]
+    await Database.save(items)
+}
+saveFile()
+
+// Read from DB
+
+async function loadFile() {
+    const loadedItems = await Database.load('./data.json')
+    const firstItem = Item.create(loadedItems[0])
+    const secondItem = Item.create(loadedItems[1])
+    const thirdItem = Item.create(loadedItems[2])
+    console.log(firstItem)
+    console.log(secondItem)
+    console.log(thirdItem)
+} 
+loadFile()
