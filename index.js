@@ -33,6 +33,17 @@ const main = async () => {
     console.log(secondItem)
     console.log(thirdItem)
 
+// Save to DB
+
+    const lists = [food,ikea]
+    await Database.save(lists)
+
+    // Read from DB
+    const loadedLists = await Database.load('./data.json')
+    const firstList = List.create(loadedLists[0])
+    const secondList = List.create(loadedLists[1])
+    console.log(firstList)
+    console.log(secondList)
 }
 
 (async () => {
