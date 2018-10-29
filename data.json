@@ -1,2 +1,1 @@
-
-{"name":"Milk","count":2},{"name":"Butter","count":1},{"name":"Table","count":1}]
+[{"name":"Food","items":[{"name":"Milk","count":2},{"name":"Butter","count":1}]},{"name":"Ikea","items":[{"name":"Table","count":1}]}]
