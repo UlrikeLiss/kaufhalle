@@ -3,4 +3,7 @@ module.exports = class Item{
         this.name = name
         this.count = count
     }
+    static create({ name, count }) {
+        return new Item(name, count)
+    }
   }
