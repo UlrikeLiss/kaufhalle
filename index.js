@@ -3,6 +3,8 @@ const Item = require('./item')
 const MainList = require('./mainlist')
 const Database = require('./database')
 
+const main = async () => {
+
   const milk = new Item ('Milk', 2)
   const butter = new Item ('Butter', 1)
   const food = new List("Food")
@@ -13,22 +15,16 @@ const Database = require('./database')
   food.addItem(milk)
   food.addItem(butter)
   ikea.addItem(table)
-  food.report()
-  ikea.report()
   UliThomas.addList(ikea)
   UliThomas.addList(food)
 
 // Save to DB
 
-  async function saveFile() {
-    const items = [milk,butter,table]
+    const items = [butter,milk,table]
     await Database.save(items)
-}
-saveFile()
 
 // Read from DB
 
-async function loadFile() {
     const loadedItems = await Database.load('./data.json')
     const firstItem = Item.create(loadedItems[0])
     const secondItem = Item.create(loadedItems[1])
@@ -36,5 +32,13 @@ async function loadFile() {
     console.log(firstItem)
     console.log(secondItem)
     console.log(thirdItem)
-} 
-loadFile()
+
+}
+
+(async () => {
+  try {
+      await main()
+  } catch (e) {
+      console.log(e)
+  }
+})()
