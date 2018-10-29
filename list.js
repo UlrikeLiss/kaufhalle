@@ -1,3 +1,4 @@
+const Item = require('./item')
 module.exports = class List {
     constructor(name) {
         this.name = name
