@@ -10,10 +10,10 @@ module.exports = class List {
     report() {
         console.log(this.name, this.items)
     }
-    
+
     static create({ name, items }) {
         const list = new List(name)
-        list.items = items.map(List.create)
+        list.items = items.map(Item.create)
         return list
     }
   }
