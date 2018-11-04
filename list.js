@@ -1,20 +1,24 @@
+const chalk = require('chalk')
 const Item = require('./item')
+
 module.exports = class List {
-    constructor(name) {
+    constructor(name, id) {
         this.name = name
+        this.id
         this.items = []
     }
-    addItem(item) {
-        this.items.push(item);
-        }
-        
-    report() {
-        console.log(this.name, this.items)
+    
+    addListToMainList(mainList) {
+        mainList.lists.push(this)
     }
 
-    static create({ name, items }) {
-        const list = new List(name)
+    static create({ name, id, items }) {
+        const list = new List(name, id)
         list.items = items.map(Item.create)
         return list
+    }
+    
+    report() {
+        console.log(this.name, this.id, this.items)
     }
   }

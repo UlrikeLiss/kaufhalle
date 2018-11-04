@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1 The number of items is #{Products.length}
+    each item in Products
+      p #{item.name}
+      strong #{count}
