@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/UlrikeLiss/kaufhalle/issues"
   },
-  "homepage": "https://github.com/UlrikeLiss/kaufhalle#readme"
+  "homepage": "https://github.com/UlrikeLiss/kaufhalle#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "circular-json": "^0.5.9",
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
 }
