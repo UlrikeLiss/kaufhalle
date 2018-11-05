@@ -4,4 +4,9 @@ block content
     h1 Shoppinglist: The number of items is #{Records.length}
     each list in Records
       p #{list.name}
+      p ---------
+        h2 
+        each item in list.items
+            li #{item.count} #{item.name}
+       
       
