@@ -1,4 +1,4 @@
-module.exports = class Item { 
+ module.exports = class Item { 
     constructor(name, count = 1,id) {
         this.name = name
         this.count = count
