@@ -1,7 +1,6 @@
 const fs = require('fs')
 var CircularJSON = require('circular-json') 
 const ItemModel = require('../models/item')
-
 const dbPath = `${__dirname}/../database/item-database.json`
 
 async function load() {
