@@ -5,10 +5,6 @@
         this.id = id
     }
 
-    addItemToList(list) {
-        list.items.push(this)
-    }
-
     static create({ name, count, id}) {
         return new Item(name, count,id)
     }

@@ -6,14 +6,15 @@ module.exports = class MainList {
           this.lists = []
       }
   
+      addListToMainList(mainList) {
+        mainList.lists.push(this)
+    }
+
       static create({ name,id,lists}) {
           const mainList = new MainList(name, id)
           mainList.lists = lists.map(List.create)
           return mainList
           
-      }
-      report() {
-          console.log(this.name, this.id, this.lists, this.lists.length)
       }
     }
   
