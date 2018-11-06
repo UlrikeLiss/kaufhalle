@@ -2,7 +2,7 @@ const fs = require('fs')
 var CircularJSON = require('circular-json') 
 const ItemModel = require('../models/item')
 
-const dbPath = `${__dirname}/../item-database.json`
+const dbPath = `${__dirname}/../database/item-database.json`
 
 async function load() {
     return new Promise((resolve, reject) => {
@@ -60,3 +60,5 @@ module.exports = {
     find,
     save
 }
+
+

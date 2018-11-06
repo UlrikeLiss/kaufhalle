@@ -2,7 +2,7 @@ const fs = require('fs')
 var CircularJSON = require('circular-json') 
 const MainListModel = require('../models/mainList')
 
-const dbPath = `${__dirname}/../data.json'`
+const dbPath = `${__dirname}/../database/mainList-database.json`
 
 async function load() {
     return new Promise((resolve, reject) => {
