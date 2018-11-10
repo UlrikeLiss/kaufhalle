@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
+require ('./database-connection')
+
 const ItemService = require('./services/item-service')
 const ListService = require('./services/list-service')
 const MainListService = require('./services/mainList-service')
@@ -14,10 +16,29 @@ app.get('/', (req, res) => {
     res.render('index')
   })
 
+// mainList Endpoints
+
 app.get('/mainList/all', async (req, res) => {
     const MainRecords = await MainListService.load()
     res.render('mainList', { MainRecords })
   })
+
+  app.post('/mainList', async (req, res) => {
+    const MainRecords = await MainListService.add(req.body)
+    res.send(MainRecords)
+  })
+
+  app.delete('/mainList/:name', async (req, res) => {
+    const MainRecords = await MainListService.deleteOne(req.params.name)
+    res.send(MainRecords)
+  })
+
+  app.post('/mainList/createAndAddMainList/:name', async (req, res) => {
+    const MainRecords = await MainListService.createAndAddListToMainList(req.params.name, req.body)
+    res.send(MainRecords)
+  })
+
+  // List Endpoints
 
   app.get('/list/all', async (req, res) => {
     const Records = await ListService.load()
@@ -29,19 +50,22 @@ app.get('/mainList/all', async (req, res) => {
     res.send(note)
   })
 
-  app.delete('/list/:id', async (req, res) => {
-    const note = await ListService.del(req.params.id)
+  app.delete('/list/:name', async (req, res) => {
+    const note = await ListService.deleteOne(req.params.name)
     res.send(note)
   })
+
+  app.post('/list/createAndAddItem/:name', async (req, res) => {
+    const note = await ListService.createAndAddItemToList(req.params.name, req.body)
+    res.send(note)
+  })
+
+
+  // Item Endpoints
 
   app.get('/item/all', async (req, res) => {
     const Products = await ItemService.load()
     res.render('item', { Products })
-  })
-
-  app.get('/item/:id', async (req, res) => {
-    const article = await ItemService.find(req.params.id)
-    res.send(article)
   })
 
   app.post('/item', async (req, res) => {
@@ -49,8 +73,8 @@ app.get('/mainList/all', async (req, res) => {
     res.send(article)
   })
 
-  app.delete('/item/:id', async (req, res) => {
-    const article = await ItemService.del(req.params.id)
+  app.delete('/item/name', async (req, res) => {
+    const article = await ItemService.deleteOne(req.params.name)
     res.send(article)
   })
 
