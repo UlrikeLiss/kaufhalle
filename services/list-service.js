@@ -1,61 +1,34 @@
-const fs = require('fs')
-var CircularJSON = require('circular-json') 
+const ItemModel = require('../models/item')
 const ListModel = require('../models/list')
-const dbPath = `${__dirname}/../database/list-database.json`
 
-async function load() {
-    return new Promise((resolve, reject) => {
-        fs.readFile(dbPath, 'utf8', (err, file) => {
-            if (err) return reject(err)
-            const Records = CircularJSON.parse(file)
-            resolve(Records)
-       })
-    })
-}
 
-async function add(list) {
-    const allRecords = await load()
-    const lastList = allRecords[allRecords.length - 1]
-    const lastListsId = lastList && lastList.id || 0
-    list.id = lastListsId + 1
+async function createAndAddItemToList(name, item) {
+    
+    const list = await ListModel.findOne({name})
+    const item = await ItemModel.create(item)
 
-    list = ListModel.create(list)
-    allRecords.push(list)
+    list.items.push(item)
 
-    await save(allRecords)
-
+    await list.save()
     return list
 }
 
-async function del(listId) {
-    const allRecords = await load()
-    const listIndex = allRecords.findIndex(p => p.id == listId)
-    if (listIndex < 0) return
 
-    allRecords.splice(listIndex, 1)
-
-    save(allRecords)
+async function load() {
+    return ListModel.find().populate('items')
 }
 
-async function find(listId) {
-    const allRecords = await load()
-
-    return allRecords.find(p => p.id == listId)
+async function add(list) {
+    return ListModel.create(list)
 }
 
-function save(Records) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(dbPath, CircularJSON.stringify(Records), (err, file) => {
-            if (err) return reject(err)
-            resolve()
-        })
-    })
+async function deleteOne(name) {
+    return ListModel.deleteOne({name})
 }
     
 module.exports = {
     load,
     add,
-    del,
-    find,
-    save
+    deleteOne,
+    createAndAddItemToList
 }
