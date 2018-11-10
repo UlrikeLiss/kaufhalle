@@ -1,18 +1,15 @@
-const Item = require('./item')
-module.exports = class List {
-    constructor(name, id) {
-        this.name = name
-        this.id
-        this.items = []
-    }
+const mongoose = require ('mongoose')
 
-    addItemToList(list) {
-        list.items.push(this)
-    }
+const ListSchema = new mongoose.Schema( {
+    name: {
+    type: String,
+    required: true
+    },
+    items: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item'
+    }]
+})
 
-    static create({ name, id, items }) {
-        const list = new List(name, id)
-        list.items = items.map(Item.create)
-        return list
-    }
-  }
+
+module.exports = mongoose.model('List', ListSchema);

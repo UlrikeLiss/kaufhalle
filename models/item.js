@@ -1,11 +1,15 @@
- module.exports = class Item { 
-    constructor(name, count = 1,id) {
-        this.name = name
-        this.count = count
-        this.id = id
-    }
+const mongoose = require('mongoose')
 
-    static create({ name, count, id}) {
-        return new Item(name, count,id)
+const ItemSchema = new mongoose.Schema( {
+    name: {
+        type: String,
+        required: true
+    },
+    count: {
+        type: Number,
+        default: '1',
+        required: true
     }
-  }
+})
+
+module.exports = mongoose.model('Item', ItemSchema)

@@ -1,20 +1,12 @@
- const List = require('./list')
-module.exports = class MainList {
-      constructor(name, id) {
-          this.name = name
-          this.id = id
-          this.lists = []
-      }
-  
-      addListToMainList(mainList) {
-        mainList.lists.push(this)
-    }
+const mongoose = require ('mongoose')
 
-      static create({ name,id,lists}) {
-          const mainList = new MainList(name, id)
-          mainList.lists = lists.map(List.create)
-          return mainList
-          
-      }
-    }
-  
+const MainListSchema = new mongoose.Schema( {
+    name: String,
+    lists: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'List'
+    }]
+})
+
+
+module.exports = mongoose.model('MainList', MainListSchema);
