@@ -73,7 +73,7 @@ app.get('/mainList/all', async (req, res) => {
     res.send(article)
   })
 
-  app.delete('/item/name', async (req, res) => {
+  app.delete('/item/:name', async (req, res) => {
     const article = await ItemService.deleteOne(req.params.name)
     res.send(article)
   })
