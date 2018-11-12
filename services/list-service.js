@@ -5,9 +5,9 @@ const ListModel = require('../models/list')
 async function createAndAddItemToList(name, item) {
     
     const list = await ListModel.findOne({name})
-    const item = await ItemModel.create(item)
+    const createdItem = await ItemModel.create(item)
 
-    list.items.push(item)
+    list.items.push(createdItem)
 
     await list.save()
     return list
