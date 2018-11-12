@@ -1,7 +1,10 @@
 const mongoose = require ('mongoose')
 
 const MainListSchema = new mongoose.Schema( {
-    name: String,
+    name: {
+        type: String,
+        required: true
+        },
     lists: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'List'
