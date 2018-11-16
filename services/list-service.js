@@ -13,6 +13,12 @@ async function createAndAddItemToList(name, item) {
     return list
 }
 
+async function emptyList(name) { 
+    const list = await ListModel.findOne({name})
+    ListModel.items = await ItemModel.deleteMany({})
+    await list.save()
+    return list
+}
 
 async function load() {
     return ListModel.find().populate('items')
@@ -30,5 +36,6 @@ module.exports = {
     load,
     add,
     deleteOne,
+    emptyList,
     createAndAddItemToList
 }
