@@ -60,6 +60,10 @@ app.get('/mainList/all', async (req, res) => {
     res.send(note)
   })
 
+ app.post('/list/emptyList/:name', async (req, res) => {
+    const note = await ListService.emptyList(req.params.name, req.body)
+    res.send(note)
+  })
 
   // Item Endpoints
 
