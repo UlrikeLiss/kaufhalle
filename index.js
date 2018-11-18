@@ -45,11 +45,6 @@ app.get('/mainList/all', async (req, res) => {
     res.render('list', { Records })
   })
 
-  app.post('/list', async (req, res) => {
-    const note = await ListService.add(req.body)
-    res.send(note)
-  })
-
   app.delete('/list/:name', async (req, res) => {
     const note = await ListService.deleteOne(req.params.name)
     res.send(note)
@@ -60,9 +55,14 @@ app.get('/mainList/all', async (req, res) => {
     res.send(note)
   })
 
- app.post('/list/emptyList/:name', async (req, res) => {
+  app.post('/list/emptyList/:name', async (req, res) => {
     const note = await ListService.emptyList(req.params.name, req.body)
     res.send(note)
+  })
+
+  app.get('/list/:name', async (req, res) => {
+    const list = await ListService.find(req.params.name)
+    res.render('specificList', { list })
   })
 
   // Item Endpoints
@@ -70,11 +70,6 @@ app.get('/mainList/all', async (req, res) => {
   app.get('/item/all', async (req, res) => {
     const Products = await ItemService.load()
     res.render('item', { Products })
-  })
-
-  app.post('/item', async (req, res) => {
-    const article = await ItemService.add(req.body)
-    res.send(article)
   })
 
   app.delete('/item/:name', async (req, res) => {
