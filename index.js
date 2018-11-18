@@ -56,7 +56,7 @@ app.get('/mainList/all', async (req, res) => {
   })
 
   app.post('/list/emptyList/:name', async (req, res) => {
-    const note = await ListService.emptyList(req.params.name, req.body)
+    const note = await ListService.emptyList(req.params.name)
     res.send(note)
   })
 
