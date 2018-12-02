@@ -14,7 +14,7 @@ export default {
 
   computed: {
     ...mapState({
-      list: state => state.lists.data,
+      lists: state => state.lists.data,
     }),
   },
   methods: {
