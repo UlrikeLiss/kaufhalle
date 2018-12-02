@@ -1,9 +1,0 @@
-extends layout
-
-block content
-    each mainList in MainRecords
-      h1 #{mainList.name}
-      p ---------
-        h2 
-        each list in mainList.lists
-            li #{list.name}
