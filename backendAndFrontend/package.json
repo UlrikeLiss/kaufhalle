@@ -1,0 +1,31 @@
+{
+  "name": "kaufhalle",
+  "version": "1.0.0",
+  "description": "Shopping List",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UlrikeLiss/kaufhalle.git"
+  },
+  "author": "Ulrike Liss",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/UlrikeLiss/kaufhalle/issues"
+  },
+  "homepage": "https://github.com/UlrikeLiss/kaufhalle#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "circular-json": "^0.5.9",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.11",
+    "mongoose-sequence": "^4.0.1",
+    "pug": "^2.0.3"
+  }
+}
