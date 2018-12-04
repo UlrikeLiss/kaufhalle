@@ -8,7 +8,7 @@ export default {
 <template lang="pug">
 div
     // div {{data.name}}
-     <router-link to="/list/:name">{{data.name}}</router-link>
+     <router-link :to="'list/' + data.name">{{data.name}}</router-link>
 </template>
 
 <style>
