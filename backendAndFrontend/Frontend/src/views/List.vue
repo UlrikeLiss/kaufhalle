@@ -1,5 +1,6 @@
 <script>
 import { mapActions, mapState } from 'vuex';
+
 export default {
   name: 'list',
   created() {
@@ -18,7 +19,10 @@ export default {
 
 <template lang="pug">
 div
-  h2.name {{list.name}}
+  h1.name {{list.name}}
+    h2 ------------------
+    p(v-for="items in list.items")
+  div {{ list.items }}
 </template>
 
 <style>
