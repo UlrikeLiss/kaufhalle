@@ -1,13 +1,15 @@
 <script>
 export default {
-    name: 'list',
+    name: 'item',
     props: ['data']
 }
 </script>
 
 <template lang="pug">
 div
-    <router-link :to="'list/' + data.name">{{data.name}}</router-link>
+     span {{data.count}}
+     span {{' '}}
+     span {{data.name}}
 </template>
 
 <style>
