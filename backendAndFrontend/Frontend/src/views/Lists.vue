@@ -23,6 +23,7 @@ export default {
 };
 </script>
 
+
 <template lang="pug">
 div
     h1 Here are the Lists:
@@ -34,9 +35,10 @@ div
 <style>
 .lists-list {
   display: flex;
+  margin: 0 auto 20px auto;
 }
 
 .list {
-  margin: 30px;
+  margin: 0px auto;
 }
 </style>
