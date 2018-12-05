@@ -26,8 +26,8 @@ const actions = {
   },
 
   async fetchList({ commit }, name) {
-    const res = await axios.get('http://localhost:3000/list/${name}/json');
-    console.log(res)
+    const res = await axios.get(`http://localhost:3000/list/${name}/json`);
+    console.log(res);
     commit('REQUEST_LIST_SUCCESS', res.data)
   },
 };
